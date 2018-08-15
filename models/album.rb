@@ -61,7 +61,7 @@ class Album
     SqlRunner.run(sql)
   end
 
-  def Album.get_all
+  def Album.all
     sql = "
       SELECT * FROM albums;
     "

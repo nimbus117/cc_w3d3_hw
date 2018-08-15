@@ -54,7 +54,7 @@ class Artist
     SqlRunner.run(sql)
   end
 
-  def Artist.get_all
+  def Artist.all
     sql = "
       SELECT * FROM artists;
     "
