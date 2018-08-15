@@ -61,7 +61,7 @@ class Album
     SqlRunner.run(sql)
   end
 
-  def Album.all(order_by:, desc: false)
+  def Album.all(order_by: '', desc: false)
 
     # can't use PG prepare for ORDER BY identifiers
     # https://www.postgresql.org/message-id/1421875206968-5834948.post%40n5.nabble.com
