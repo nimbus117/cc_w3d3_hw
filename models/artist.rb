@@ -67,4 +67,11 @@ class Artist
     found_artist = SqlRunner.run(sql, values)[0]
     return Artist.new(found_artist)
   end
+
+  def Artist.find_like_name(name)
+    sql = "SELECT * FROM artists WHERE lower(name) LIKE $1"
+    values = ["%#{name}%"]
+    found_artists = SqlRunner.run(sql, values)
+    return found_artists.map {|artist| Artist.new(artist)}
+  end
 end
