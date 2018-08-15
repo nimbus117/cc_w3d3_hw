@@ -27,4 +27,11 @@ class Artist
     SqlRunner.run(sql)
   end
 
+  def Artist.get_all
+    sql = "
+      SELECT * FROM artists;
+    "
+    SqlRunner.run(sql).map {|artist| Artist.new(artist)}
+  end
+
 end
