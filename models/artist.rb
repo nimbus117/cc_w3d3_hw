@@ -2,7 +2,7 @@ require_relative('../db/sqlrunner.rb')
 
 class Artist
 
-attr_accessor :name
+attr_accessor :name, :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
