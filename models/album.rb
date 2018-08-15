@@ -73,4 +73,11 @@ class Album
     found_album = SqlRunner.run(sql, values)[0]
     return Album.new(found_album)
   end
+
+  def Album.find_like_title(title)
+    sql = "SELECT * FROM albums WHERE lower(title) LIKE $1"
+    values = ["%#{title}%"]
+    found_albums = SqlRunner.run(sql, values)
+    return found_albums.map {|album| Album.new(album)}
+  end
 end
