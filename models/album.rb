@@ -61,10 +61,18 @@ class Album
     SqlRunner.run(sql)
   end
 
-  def Album.all
-    sql = "
-      SELECT * FROM albums;
-    "
+  def Album.all(order_by: 'release_date', desc: false)
+
+    # can't use PG prepare for ORDER BY identifiers
+    # https://www.postgresql.org/message-id/1421875206968-5834948.post%40n5.nabble.com
+
+    # array of valid args for order_by
+    valid_order_by = ['release_date', 'title', 'genre']
+    # use release_date unless valid arg is given
+    order_by = 'release_date' unless valid_order_by.include? order_by
+
+    sql = "SELECT * FROM albums ORDER BY #{order_by}"
+    sql << ' desc' if desc
     SqlRunner.run(sql).map {|album| Album.new(album)}
   end
 
