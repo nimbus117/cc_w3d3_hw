@@ -37,6 +37,17 @@ attr_accessor :name, :id
     SqlRunner.run(sql, values)
   end
 
+  def albums
+    sql = "
+      SELECT *
+      FROM albums
+      WHERE artist_id = $1
+    "
+    values = [@id]
+    albums = SqlRunner.run(sql, values)
+    return albums.map {|album| Album.new(album)}
+  end
+
   def Artist.delete_all
     sql = "
       DELETE FROM artists;
