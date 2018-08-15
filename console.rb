@@ -22,7 +22,7 @@ artist3.save
 
 album1 = Album.new({
   'title' => 'Shamanaid',
-  'genre' => 'Psychedelic Blues',
+  'genre' => 'Blues/Psychedelic',
   'release_date' => '2015-03-11',
   'artist_id' => artist1.id
 })
@@ -30,7 +30,7 @@ album1.save
 
 album2 = Album.new({
   'title' => 'Loves Voodoo',
-  'genre' => 'Psychedelic Blues',
+  'genre' => 'Blues/Psychedelic',
   'release_date' => '2013-11-13',
   'artist_id' => artist1.id
 })
@@ -38,7 +38,7 @@ album2.save
 
 album3 = Album.new({
   'title' => "Who's Next",
-  'genre' => 'R&B',
+  'genre' => 'Blues/Rock',
   'release_date' => '1971-08-14',
   'artist_id' => artist2.id
 })
@@ -46,7 +46,7 @@ album3.save
 
 album4 = Album.new({
   'title' => 'The Who Sell Out',
-  'genre' => 'R&B',
+  'genre' => 'Blues/Rock',
   'release_date' => '1967-12-15',
   'artist_id' => artist2.id
 })
