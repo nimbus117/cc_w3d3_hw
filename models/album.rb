@@ -21,4 +21,11 @@ class Album
     values = [@title, @genre, @artist_id]
     @id = SqlRunner.run(sql, values)[0]['id'].to_i
   end
+
+  def Album.delete_all
+    sql = "
+      DELETE FROM albums;
+    "
+    SqlRunner.run(sql)
+  end
 end
