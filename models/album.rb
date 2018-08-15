@@ -59,4 +59,18 @@ class Album
     "
     SqlRunner.run(sql)
   end
+
+  def Album.get_all
+    sql = "
+      SELECT * FROM albums;
+    "
+    SqlRunner.run(sql).map {|album| Album.new(album)}
+  end
+
+  def Album.find_by_id(id)
+    sql = "SELECT * FROM albums WHERE id = $1"
+    values = [id]
+    found_album = SqlRunner.run(sql, values)[0]
+    return Album.new(found_album)
+  end
 end
