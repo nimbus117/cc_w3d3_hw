@@ -1,24 +1,25 @@
 require_relative('../db/sqlrunner.rb')
 
 class Album
-  attr_accessor :title, :genre, :artist_id
+  attr_accessor :title, :genre, :release_date, :artist_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @title = options['title']
     @genre = options['genre']
+    @release_date = options['release_date']
     @artist_id = options['artist_id']
   end
 
   def save
     sql = "
       INSERT INTO albums
-        (title, genre, artist_id)
+        (title, genre, release_date, artist_id)
       VALUES
-        ($1, $2, $3)
+        ($1, $2, $3, $4)
       RETURNING id;
     "
-    values = [@title, @genre, @artist_id]
+    values = [@title, @genre, @release_date, @artist_id]
     @id = SqlRunner.run(sql, values)[0]['id'].to_i
   end
 
@@ -26,13 +27,13 @@ class Album
     sql = "
       UPDATE albums
       SET (
-        title, genre, artist_id
+        title, genre, release_date, artist_id
       ) = (
-        $1, $2, $3
+        $1, $2, $3, $4
       )
-      WHERE id = $4
+      WHERE id = $5
     "
-    values = [@title, @genre, @artist_id, @id]
+    values = [@title, @genre, @release_date, @artist_id, @id]
     SqlRunner.run(sql, values)
   end
 
