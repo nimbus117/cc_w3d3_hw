@@ -89,4 +89,11 @@ class Album
     return found_albums.map {|album| Album.new(album)}
   end
 
+  def Album.find_like_genre(genre)
+    sql = "SELECT * FROM albums WHERE genre ILIKE $1"
+    values = ["%#{genre}%"]
+    found_albums = SqlRunner.run(sql, values)
+    return found_albums.map {|album| Album.new(album)}
+  end
+
 end
