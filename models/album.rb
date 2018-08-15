@@ -81,4 +81,12 @@ class Album
     found_albums = SqlRunner.run(sql, values)
     return found_albums.map {|album| Album.new(album)}
   end
+
+  def Album.find_by_year(year)
+    sql = "select * from albums WHERE EXTRACT(year FROM \"release_date\") = $1"
+    values = [year]
+    found_albums = SqlRunner.run(sql, values)
+    return found_albums.map {|album| Album.new(album)}
+  end
+
 end

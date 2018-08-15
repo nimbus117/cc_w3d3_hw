@@ -68,5 +68,13 @@ album6 = Album.new({
 })
 album6.save
 
+album7 = Album.new({
+  'title' => 'The Monsanto Years',
+  'genre' => 'Folk/Rock',
+  'release_date' => '2015-06-29',
+  'artist_id' => artist3.id
+})
+album7.save
+
 binding.pry
 nil
