@@ -8,7 +8,7 @@ class Album
     @title = options['title']
     @genre = options['genre']
     @release_date = options['release_date']
-    @artist_id = options['artist_id']
+    @artist_id = options['artist_id'].to_i
   end
 
   def save
